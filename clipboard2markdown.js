@@ -39,6 +39,18 @@
     },
 
     {
+      filter: function (node) {
+        var style = node.getAttribute('style') || '';
+        return (node.nodeName === 'SPAN' &&
+                node.parentNode.nodeName === 'H3' &&
+                style.toLowerCase().includes('font-size: 8pt') ? true: false);
+      },
+      replacement: function (content, node) {
+        return '<small>' + content + '</small>';
+      }
+    },
+
+    {
       filter: 'sub',
       replacement: function (content) {
         return '~' + content + '~';
