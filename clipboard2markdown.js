@@ -84,6 +84,17 @@
 
     {
       filter: function (node) {
+        var style = node.getAttribute('style') || '';
+        return (['B', 'STRONG'].includes(node.nodeName) ||
+                style.toLowerCase().includes('font-weight: 700') ? true: false);
+      },
+      replacement: function (content) {
+        return '**' + content + '**';
+      }
+    },
+
+    {
+      filter: function (node) {
         var hasSiblings = node.previousSibling || node.nextSibling;
         var isCodeBlock = node.parentNode.nodeName === 'PRE' && !hasSiblings;
         var isCodeElem = node.nodeName === 'CODE' ||
