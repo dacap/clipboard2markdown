@@ -72,7 +72,11 @@
     },
 
     {
-      filter: ['em', 'i', 'cite', 'var'],
+      filter: function (node) {
+        var style = node.getAttribute('style') || '';
+        return (['EM', 'I', 'CITE', 'VAR'].includes(node.nodeName) ||
+                style.toLowerCase().includes('font-style: italic') ? true: false);
+      },
       replacement: function (content) {
         return '*' + content + '*';
       }
