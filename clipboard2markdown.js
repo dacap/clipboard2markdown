@@ -6,16 +6,28 @@
     {
       filter: 'h1',
       replacement: function (content, node) {
-        var underline = Array(content.length + 1).join('=');
-        return '\n\n' + content + '\n' + underline + '\n\n';
+        return '\n\n# ' + content + '\n\n';
       }
     },
 
     {
       filter: 'h2',
       replacement: function (content, node) {
-        var underline = Array(content.length + 1).join('-');
-        return '\n\n' + content + '\n' + underline + '\n\n';
+        return '\n\n## ' + content + '\n\n';
+      }
+    },
+
+    {
+      filter: 'h3',
+      replacement: function (content, node) {
+        return '\n\n### ' + content + '\n\n';
+      }
+    },
+
+    {
+      filter: 'h4',
+      replacement: function (content, node) {
+        return '\n\n#### ' + content + '\n\n';
       }
     },
 
