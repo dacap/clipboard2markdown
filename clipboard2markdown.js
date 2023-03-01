@@ -97,10 +97,12 @@
       filter: function (node) {
         var hasSiblings = node.previousSibling || node.nextSibling;
         var isCodeBlock = node.parentNode.nodeName === 'PRE' && !hasSiblings;
+        var style = node.getAttribute('style') || '';
         var isCodeElem = node.nodeName === 'CODE' ||
             node.nodeName === 'KBD' ||
             node.nodeName === 'SAMP' ||
-            node.nodeName === 'TT';
+            node.nodeName === 'TT' ||
+            style.toLowerCase().includes('courier new');
 
         return isCodeElem && !isCodeBlock;
       },
