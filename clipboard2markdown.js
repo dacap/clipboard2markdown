@@ -125,7 +125,13 @@
             prefix += ' ';
           }
         }
-
+        else if (/ul/i.test(parent.nodeName)) {
+          parent = parent.parentNode;
+          while (parent && /ul/i.test(parent.nodeName)) {
+            prefix = '  ' + prefix;
+            parent = parent.parentNode;
+          }
+        }
         return prefix + content;
       }
     }
